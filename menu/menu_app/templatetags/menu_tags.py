@@ -1,6 +1,7 @@
 from django import template
-from menu_app.models import MenuItem
 from django.core.exceptions import ObjectDoesNotExist
+
+from menu_app.models import MenuItem
 
 register = template.Library()
 
@@ -13,7 +14,7 @@ def draw_menu(menu_name: str = None, menu_item: str = None):
 
     def get_current_menu(menu_item: str = None):
         if not menu_item:
-            return list(items_to_draw.filter(parent=None))          
+            return list(items_to_draw.filter(parent=None))
         return list(items_to_draw.filter(parent__name=menu_item))
 
     def insert_submenu(submenu: list = None, current_menu: list = None):

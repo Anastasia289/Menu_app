@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .models import Menu, MenuItem
+from .models import Menu
 
 
 def draw_menu(request, path):
