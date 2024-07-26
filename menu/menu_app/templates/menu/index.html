@@ -1,0 +1,17 @@
+{% load static %}
+<nav class="row" style="background: blue; color: white;">
+ <h1 class="col-md-15 text-center">Django приложение, реализующее древовидное меню</h1>
+</nav> 
+{% load menu_tags %}
+<h3>Список меню:</h3>
+{% if menus %}
+    <ul>
+        {% for menu in menus %}
+            <li><a href='{{ menu.get_full_url }}'>{{ menu }}</li>       
+        {% endfor %}
+    </ul>    
+{% elif menu_name %}
+    <h3>{{ menu_name }}</h3>
+    {% draw_menu menu_name menu_item %}
+    <h4><a href={% url 'main_menu' %}>Назад</h4>
+{% endif %} 
